@@ -1,44 +1,40 @@
 package kurs1;
 public class Main {
-    public static void printEmployee(Employee[] arrayEmployee){
+    static Employee[] arrayEmployee=new Employee[10];;
+    public static void printEmployee(){
         for (int i=0;i<arrayEmployee.length;i++){
             System.out.println(arrayEmployee[i]);
         }
     }
-    public static void minSalary(Employee[] arrayEmployee){
-        int min=arrayEmployee[0].getSalary();
-        int counter=0;
-        for (int i=0;i<arrayEmployee.length;i++){
-            if(min>arrayEmployee[i].getSalary()){
-                min=arrayEmployee[i].getSalary();
-                counter=i;
+    public static void minSalary(){
+        Employee min=arrayEmployee[0];
+        for (int i=1;i<arrayEmployee.length;i++){
+            if(min.getSalary()>arrayEmployee[i].getSalary()){
+                min=arrayEmployee[i];
             }
         }
-        System.out.println("Cотрудник с минимальной зарплатой: "+arrayEmployee[counter]);
+        System.out.println("Cотрудник с минимальной зарплатой: "+min);
     }
-    public static void maxSalary(Employee[] arrayEmployee){
-        int max=0;
-        int counter=0;
-        for (int i=0;i<arrayEmployee.length;i++){
-            if(max<arrayEmployee[i].getSalary()){
-                max=arrayEmployee[i].getSalary();
-                counter=i;
+    public static void maxSalary(){
+        Employee max=arrayEmployee[0];
+        for (int i=1;i<arrayEmployee.length;i++){
+            if(max.getSalary()<arrayEmployee[i].getSalary()){
+                max=arrayEmployee[i];
             }
         }
-        System.out.println("Cотрудник с максимальной зарплатой: "+arrayEmployee[counter]);
+        System.out.println("Cотрудник с максимальной зарплатой: "+max);
     }
-    public static void printListFIO(Employee[] arrayEmployee){
+    public static void printListFIO(){
         for(int i=0;i<arrayEmployee.length;i++){
             System.out.println(arrayEmployee[i].getNameFIO());
         }
     }
-    public static double avgSalary(Employee[] arrayEmployee){
+    public static double avgSalary(){
         int len=arrayEmployee.length;
-        double avg=summSalary(arrayEmployee)*1.0/len;
+        double avg=summSalary()*1.0/len;
         return avg;
     }
     public static void main(String[] args) {
-        Employee[] arrayEmployee=new Employee[10];
         arrayEmployee[0]=new Employee("Син Алексей Андреевич","1",186_429);
         arrayEmployee[1]=new Employee("Мельников Алексей Семенович","2",96_771);
         arrayEmployee[2]=new Employee("Семенов Семен Иванович","1",86_429);
@@ -49,14 +45,14 @@ public class Main {
         arrayEmployee[7]=new Employee("Антонов Семен Антонович","2",96_726);
         arrayEmployee[8]=new Employee("Иванова Светлана Петровна","1",98_286);
         arrayEmployee[9]=new Employee("Ива Алефтина Андреевна","5",215_926);
-        printEmployee(arrayEmployee);
-        System.out.println("Средняя зарплата "+avgSalary(arrayEmployee));
-        System.out.println("Cуммa затрат на зарплаты в месяц "+summSalary(arrayEmployee));
-        minSalary(arrayEmployee);
-        maxSalary(arrayEmployee);
-        printListFIO(arrayEmployee);
+        printEmployee();
+        System.out.println("Средняя зарплата "+avgSalary());
+        System.out.println("Cуммa затрат на зарплаты в месяц "+summSalary());
+        minSalary();
+        maxSalary();
+        printListFIO();
     }
-    public static int summSalary(Employee[] arrayEmployee){
+    public static int summSalary(){
         int summ=0;
         for (int i=0;i<arrayEmployee.length;i++){
            summ= summ+arrayEmployee[i].getSalary();
