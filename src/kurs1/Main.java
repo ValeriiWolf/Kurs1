@@ -1,6 +1,6 @@
 package kurs1;
 public class Main {
-    static Employee[] arrayEmployee=new Employee[10];;
+    static Employee[] arrayEmployee=new Employee[10];
     public static void printEmployee(){
         for (int i=0;i<arrayEmployee.length;i++){
             System.out.println(arrayEmployee[i]);
